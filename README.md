@@ -9,13 +9,14 @@
 
 ## Data Model Mapping
 
-```
+```sql
 Mahasiswa (nim, nama, jenis_kelamin, tgl_lahir, jalan, kota, kodepos, no_hp, kd_ds)
 Dosen (kd_ds, nama)
 Matakuliah (kd_mk, nama, sks)
 JadwalMengajar (kd_ds, kd_mk, hari, jam, ruang)
 KRSMahasiswa (nim, kd_mk, kd_ds, semester, nilai)
 ```
+
 - Buat DDL Script berdasarkan skema ERD tersebut diatas. 
 - Jalankan script DDL tersebut pada DBMS MySQL.
 
@@ -23,7 +24,7 @@ KRSMahasiswa (nim, kd_mk, kd_ds, semester, nilai)
 
 ## 1. Buat dulu script untuk table Mahasiswa :
 
-```
+```sql
 create table Mahasiswa (
     nim varchar(10) PRIMARY KEY,
     nama varchar(25) NOT NULL,
@@ -48,7 +49,7 @@ create table Mahasiswa (
 ![alt text](ss/2.png)
 
 ## 2. Buat script untuk table Dosen :
-```
+```sql
 create table Dosen (
     kd_ds varchar(10) PRIMARY KEY,
     nama varchar(35) NOT NULL
@@ -64,7 +65,7 @@ create table Dosen (
 ![alt text](ss/4.png)
 
 ## 3. Buat script untuk Mata kuliah :
-```
+```sql
 create table Matakuliah (
     kd_mk varchar(10) PRIMARY KEY,
     nama varchar(30) NOT NULL,
@@ -81,7 +82,7 @@ create table Matakuliah (
 ![alt text](ss/6.png)
 
 ## 4. Buat script untuk jadwal mengajar :
-```
+```sql
 create table JadwalMengajar (
     kd_ds varchar(10) NOT NULL,
     kd_mk varchar(10) NOT NULL,
@@ -103,7 +104,7 @@ create table JadwalMengajar (
 ![alt text](ss/8.png)
 
 ## 5. Buat script untuk KRSMahasiswa :
-```
+```sql
 CREATE TABLE KRSMahasiswa (
     nim varchar(10) NOT NULL,
     kd_mk varchar(10) NOT NULL,
@@ -141,7 +142,7 @@ Berdasarkan table Mahasiswa pada praktikum sebelumnya: (nim, nama, jenis_kelamin
 - Tampilkan data Mahasiswa terurut berdasarkan nama.
 
 ## 1. Mengisi tabel dengan minimal 5 record data :
-```
+```sql
 insert into Mahasiswa (nim, nama, jenis_kelamin, tgl_lahir, jalan, kota, kodepos, no_hp, kd_ds) values 
 -> (11223344,"ari santoso","Laki-laki","1998-10-12","","Bekasi","","",""), 
 -> (11223345,"ario talib","Laki-laki","1999-11-16","","Cikarang","","",""), 
@@ -190,7 +191,7 @@ insert into Mahasiswa (nim, nama, jenis_kelamin, tgl_lahir, jalan, kota, kodepos
 ![alt text](ss/17.png)
 
 ## 8. Menampilkan semua Mahasiswa yang berasal dari Bekasi dengan kelamin laki-laki atau Mahasiswa yang berumur lebih dari 22 tahun dengan kelamin wanita dengan cara sebagai berikut :
-```
+```sql
 select * from Mahasiswa where kota='Bekasi' and jenis_kelamin='Laki-laki' 
 or tgl_lahir<='2002-4-22' 
 and jenis_kelamin='Perempuan';
@@ -258,7 +259,6 @@ DELETE FROM biodata WHERE nim='312310487';
 # Apa bedanya penggunaan BETWEEN dan penggunaan operator >= dan <= ?
 
 - (misal: tgl_lahir BETWEEN '1990-10-10' AND '1992-10-11')
-- 
 - (misal: tgl_lahir >= '1990-10-10' AND tgl_lahir <= '1992-10-11')
 
 # Jawaban nya :
